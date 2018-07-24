@@ -43,7 +43,7 @@ def goodFormater(badFormat, outputPath, year, length):
 
     '''
 
-    devcom = 'PHAS' + badFormat['Cand'][0]
+    devcom = 'PHAS' + badFormat['CAND'][0]
 
     goodFormat = {devcom: []}
 
@@ -52,12 +52,15 @@ def goodFormater(badFormat, outputPath, year, length):
         goodFormat[devcom].append(int(row[0]))  # add first val to devcom
 
         for i in range(length-1):
-            # if a key for that module doesn't exist, initialize with empt array
-            goodFormat.setdefault(row[(2 * i) + 1], [])
-            # add value of module to module
-            goodFormat[row[(2*i)+1]].append(int(row[2*(i + 1)]))
 
-    goodFormat.pop('0')
+            # if a key for that module doesn't exist, initialize with empt array
+            # .upper to convert all module names to uppercase
+            goodFormat.setdefault(row[(2 * i) + 1].upper(), [])
+            # add value of module to module
+            goodFormat[row[(2*i)+1].upper()].append(int(row[2*(i + 1)]))
+
+    # pop the zeros
+    goodFormat.pop('0', None)
 
     goodFormat['Averages'] = everyonesAverage(year, badFormat, length)
     if outputPath is not None:  # if requested to reformat and save to file
@@ -202,7 +205,22 @@ def askCandidateNumber():
     ])['candidateNumber']
 
 def badFormater(input):
-    return {row[0]: row[1:] for row in csv.reader(input.open(
+    '''[summary]
+    
+    Converts candidate number (row[0]) to caps
+        sets as a key in dict
+    
+    loop thru list of candidate's results (row[1:])
+        if val in results is not 'DA' add val to dictionary
+        else add 0 to dictionary
+    
+    Arguments:
+        input {pathlib.Path} -- path to input file
+
+    Returns:
+        [dict] -- {candidate number : [list of module,result for candidate]}
+    '''
+    return {row[0].upper(): [val if val != 'DA' else 0 for val in row[1:]] for row in csv.reader(input.open(
             mode='r', newline=''), delimiter=',')}
 
 def main(args):

@@ -15,6 +15,20 @@ output format:
 
 ## Release History
 
+* 0.1.3.1
+    * convert 'DA' results to 0 in badFormater
+* 0.1.3
+    * Convert 'DA' results to 0
+* 0.1.2.3
+    * Added .upper() to key in badformater incase 'cand'/'Cand'/'CAND'
+* 0.1.2.2
+    * Changed form doing .upper() in badformater to doing it in goodformater
+* 0.1.2.1
+    * Changed from doing .upper() to each row in badformater to key.upper():val.upper()
+* 0.1.2
+    * Changed badformater to import everything uppercase
+* 0.1.1
+    * goodFormatter would throw key error when popping '0' if '0' didn't exist
 * 0.1.0
     * The first proper release
 
