@@ -4,7 +4,7 @@ Makes UCL PHAS results better
 """
 
 __author__ = "Hayk Khachatryan"
-__version__ = "0.1.4.1"
+__version__ = "0.1.4.3"
 __license__ = "MIT"
 
 import argparse
@@ -50,17 +50,23 @@ def goodFormater(badFormat, outputPath, year, length):
 
     # ignore first row cause it's just 'Mark' & 'ModuleN'
     for row in list(badFormat.values())[1:]:
-        if year < 3:
-
+        if year < 3: # take first column = devcom into consideration
             goodFormat[devcom].append(int(row[0]))  # add first val to devcom
+            for i in range(length-1):
 
-        for i in range(length-1):
+                # if a key for that module doesn't exist, initialize with empt array
+                # .upper to convert all module names to uppercase
+                goodFormat.setdefault(row[(2 * i) + 1].upper(), [])
+                # add value of module to module
+                goodFormat[row[(2*i)+1].upper()].append(int(row[2*(i + 1)]))
+        else: # no more devcom
+            for i in range(length-1):
 
-            # if a key for that module doesn't exist, initialize with empt array
-            # .upper to convert all module names to uppercase
-            goodFormat.setdefault(row[(2 * i) + 1].upper(), [])
-            # add value of module to module
-            goodFormat[row[(2*i)+1].upper()].append(int(row[2*(i + 1)]))
+                # if a key for that module doesn't exist, initialize with empt array
+                # .upper to convert all module names to uppercase
+                goodFormat.setdefault(row[(2 * i)].upper(), [])
+                # add value of module to module
+                goodFormat[row[(2*i)].upper()].append(int(row[(2*i) + 1]))
 
     # pop the zeros
     goodFormat.pop('0', None)

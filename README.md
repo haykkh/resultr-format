@@ -15,6 +15,8 @@ output format:
 
 ## Release History
 
+* 0.1.4.3
+    * Odd/Even indexing for columns needed fixing for year3+ as no more devcom in first column
 * 0.1.4.2
     * Professional spelling error in goodFormater
 * 0.1.4.1
