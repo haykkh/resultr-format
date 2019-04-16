@@ -15,6 +15,8 @@ output format:
 
 ## Release History
 
+* 0.1.4.2
+    * Professional spelling error in goodFormater
 * 0.1.4.1
     * Forgot to initialise goodFormater when i fixed devcom bug
 * 0.1.4

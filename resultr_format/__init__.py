@@ -46,7 +46,7 @@ def goodFormater(badFormat, outputPath, year, length):
         devcom = 'PHAS' + badFormat['CAND'][0]
         goodFormat = {devcom: []}
     else:
-        goodformat = {}
+        goodFormat = {}
 
     # ignore first row cause it's just 'Mark' & 'ModuleN'
     for row in list(badFormat.values())[1:]:
