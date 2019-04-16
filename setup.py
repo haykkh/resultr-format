@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="resultr_format",
-    version="0.1.4",
+    version="0.1.4.1",
     author="Hayk Khachatryan",
     author_email="hi@hayk.io",
     description="Making UCL PHAS results better",

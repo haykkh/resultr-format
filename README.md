@@ -15,6 +15,8 @@ output format:
 
 ## Release History
 
+* 0.1.4.1
+    * Forgot to initialise goodFormater when i fixed devcom bug
 * 0.1.4
     * Fixed devcom bug for year 3+ people
 * 0.1.3.1
