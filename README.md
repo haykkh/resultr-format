@@ -15,6 +15,8 @@ output format:
 
 ## Release History
 
+* 0.1.4.5
+    * Odd/Even indexing in myGrades
 * 0.1.4.4
     * Odd/Even indexing for columns needed fixing for year3+ as no more devcom in first column (in myGrades)
 * 0.1.4.3

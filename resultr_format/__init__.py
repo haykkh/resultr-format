@@ -107,10 +107,10 @@ def myGrades(year, candidateNumber, badFormat, length):
         myFinalResult = sum([int(badFormat[candidateNumber][2*(i + 1)])
                              * weights2[i] for i in range(length-1)]) / 7
     elif year == 3:
-        myFinalResult = sum([int(badFormat[candidateNumber][2*i])
+        myFinalResult = sum([int(badFormat[candidateNumber][(2*i)+1])
                              * weights2[i] for i in range(length-1)]) / 7
     elif year == 4:
-        myFinalResult = sum([int(badFormat[candidateNumber][2*i])
+        myFinalResult = sum([int(badFormat[candidateNumber][(2*i)+1])
                              for i in range(length-1)]) / 8
 
     return myFinalResult
