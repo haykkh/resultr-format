@@ -4,7 +4,7 @@ Makes UCL PHAS results better
 """
 
 __author__ = "Hayk Khachatryan"
-__version__ = "0.1.4.3"
+__version__ = "0.1.4.4"
 __license__ = "MIT"
 
 import argparse
@@ -103,11 +103,14 @@ def myGrades(year, candidateNumber, badFormat, length):
     if year == 1:
         myFinalResult = sum([int(badFormat[candidateNumber][2*(i + 1)])
                              * weights1[i] for i in range(length-1)]) / 6
-    elif year == 2 or year == 3:
+    elif year == 2:
         myFinalResult = sum([int(badFormat[candidateNumber][2*(i + 1)])
                              * weights2[i] for i in range(length-1)]) / 7
+    elif year == 3:
+        myFinalResult = sum([int(badFormat[candidateNumber][2*i])
+                             * weights2[i] for i in range(length-1)]) / 7
     elif year == 4:
-        myFinalResult = sum([int(badFormat[candidateNumber][2*(i + 1)])
+        myFinalResult = sum([int(badFormat[candidateNumber][2*i])
                              for i in range(length-1)]) / 8
 
     return myFinalResult
