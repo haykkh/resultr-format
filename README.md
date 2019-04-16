@@ -15,6 +15,8 @@ output format:
 
 ## Release History
 
+* 0.1.4
+    * Fixed devcom bug for year 3+ people
 * 0.1.3.1
     * convert 'DA' results to 0 in badFormater
 * 0.1.3

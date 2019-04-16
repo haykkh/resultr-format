@@ -4,7 +4,7 @@ Makes UCL PHAS results better
 """
 
 __author__ = "Hayk Khachatryan"
-__version__ = "0.1.0"
+__version__ = "0.1.4"
 __license__ = "MIT"
 
 import argparse
@@ -42,14 +42,15 @@ def goodFormater(badFormat, outputPath, year, length):
         saves to file if output path is specified
 
     '''
-
-    devcom = 'PHAS' + badFormat['CAND'][0]
-
-    goodFormat = {devcom: []}
+    if year < 3:
+        devcom = 'PHAS' + badFormat['CAND'][0]
+        goodFormat = {devcom: []}
 
     # ignore first row cause it's just 'Mark' & 'ModuleN'
     for row in list(badFormat.values())[1:]:
-        goodFormat[devcom].append(int(row[0]))  # add first val to devcom
+        if year < 3:
+
+            goodFormat[devcom].append(int(row[0]))  # add first val to devcom
 
         for i in range(length-1):
 
